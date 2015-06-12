@@ -1,13 +1,55 @@
 
+	<div id="settings">
 
-  <h1>{{ title }}</h1>
-  <p> Report Description : {{ report.title }}</hp>
+		<h1>settings</h1>
+
+		<label for="title">Title: </label><input id="title" type="text"/>
+		<br />
+		<label for="title">Description: </label><input id="description" type="text"/>
+		<br />
+		<button onclick="print()">print</button>
+
+	</div>
+
+
+
+  <div id="logo"></div>
+
+	<h1>Digital Ambition</h1>
+	<h2>Product Backlog Report</h2>
+
+  <table>
+      <tr>
+          <td>Name</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Jira Filter</td>
+          <td>{{ report.title }}</td>
+      </tr>
+      <tr>
+          <td>Generated</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Description</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Number of issues in report</td>
+          <td>{{ report.numberOfIssues }}</td>
+      </tr>
+  </table>
+
 
   <hr />
 
   {{#each report.item}}
   <div class="item">
-  <h3>{{ key }} {{ summary }}</h3>
+  <h3> {{#each key}} {{ _ }} {{/each}} -  {{ summary }} ( {{#each status}} {{ _ }} {{/each}} )</h3>
+
+
+
 
   {{{ description }}}
 

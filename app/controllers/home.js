@@ -23,9 +23,10 @@ router.get('/', function (req, res, next) {
 
 			report = result.rss.channel[0];
 
+      // get number of issues
+      report.numberOfIssues = Object.keys(report.item).length;
 
-
-			console.log(report.item[0].key[0]);
+			console.log(report.numberOfIssues);
 
 	    	// render template with report
 	    	res.render('report', {
