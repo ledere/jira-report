@@ -1,0 +1,37 @@
+default route:
+
+	homepage
+
+	/list: list existing reports
+
+	/new: upload new report
+
+
+list existing reports:
+
+	list all uploaded reports in /data (sort by created date, descending)
+
+	click on report: generate report (/view/:filename)
+
+
+upload new report:
+
+	select file
+
+	upload to /data
+
+	re-direct to /list
+
+
+generate report (filename)
+
+	read xml file
+
+	convert to json
+
+	render using template
+
+	
+	
+	send to browser
+
