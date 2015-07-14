@@ -3,58 +3,81 @@
 
 		<h1>settings</h1>
 
-		<label for="title">Title: </label><input id="title" type="text"/>
-		<br />
-		<label for="title">Description: </label><input id="description" type="text"/>
-		<br />
-		<button onclick="print()">print</button>
+		<label for="title"><span>Title: </span><input id="title" type="text" ng-model="settings.title"/></label>
+		<label for="description"><span>Description:</span><input id="description" type="text" ng-model="settings
+		.description"/></label>
+    <label for="print"><span></span><button onclick="print()">print</button></label>
 
 	</div>
 
+	<div id="report">
 
 
-  <div id="logo"></div>
+      <div id="logo"></div>
 
-	<h1>Digital Ambition</h1>
-	<h2>Product Backlog Report</h2>
+      <h1>Digital Ambition</h1>
+      <h2>Product Backlog Report</h2>
 
-  <table>
-      <tr>
-          <td>Name</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Jira Filter</td>
-          <td>{{ report.title }}</td>
-      </tr>
-      <tr>
-          <td>Generated</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Description</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Number of issues in report</td>
-          <td>{{ report.numberOfIssues }}</td>
-      </tr>
-  </table>
-
-
-  <hr />
-
-  {{#each report.item}}
-  <div class="item">
-  <h3> {{#each key}} {{ _ }} {{/each}} -  {{ summary }} ( {{#each status}} {{ _ }} {{/each}} )</h3>
+      <table>
+          <tr>
+              <td>Name</td>
+              <td ng-bind="settings.title"></td>
+          </tr>
+          <tr>
+              <td>Jira Filter</td>
+              <td>{{ report.title }}</td>
+          </tr>
+          <tr>
+              <td>Generated</td>
+              <td>{{ report.dateCreated }}</td>
+          </tr>
+          <tr>
+              <td>Description</td>
+              <td ng-bind="settings.description"></td>
+          </tr>
+          <tr>
+              <td>Number of issues in report</td>
+              <td>{{ report.numberOfIssues }}</td>
+          </tr>
+      </table>
 
 
+      <hr />
 
 
-  {{{ description }}}
+		{{#each report.item}}
+        <div class="item">
+
+            <div class="status status-{{#each status}}{{ $.id }}{{/each}}">{{#each status}} {{ _ }}
+						{{/each}}</div>
+
+            <h3> {{#each key}} {{ _ }} {{/each}} -  {{ summary }}</h3>
 
 
 
-  </div>
-	<hr>
-  {{/each}}
+
+					{{{ description }}}
+
+
+					<!-- attachments -->
+					{{#each attachments}}
+						{{#if attachment.length }}
+						<h2>Attachments</h2>
+							<ul>
+									{{#each attachment}}
+										<li><a href="https://abnamro.atlassian.net/secure/attachment/{{ $.id }}/{{ $.name }}"
+													 target="_blank">{{ $
+										.name
+										}}</a></li>
+									{{/each}}
+							</ul>
+						{{/if}}
+					{{/each}}
+
+
+        </div>
+        <hr>
+		{{/each}}
+
+	</div>
+

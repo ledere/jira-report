@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -18,5 +17,95 @@ a {
 #settings {
   padding: 20px;
   background-color: #eeeeee;
-  margin-bottom: 100px;
+//  margin-bottom: 100px;
+
+  label {
+    width: 300px;
+    display: block;
+    margin-bottom: 5px;
+
+      span {
+        width: 100px;
+        display: inline-block;
+      }
+      input {
+
+      }
+
+  }
+}
+
+
+#report {
+  padding: 50px;
+}
+
+// Item
+
+.item {
+
+  // Status
+
+  .status {
+    float: right;
+    font-family: "monaco";
+    text-transform: uppercase;
+    font-size: 9pt;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 2px 6px;
+
+
+      // To Do
+      &.status-10104 {
+        background-color: #fff;
+        border-color: #e4e8ed;
+        color: #4a6785;
+      }
+      // In Progress
+      &.status-3 {
+        background-color: #fff;
+        border-color: #ffe28c;
+        color: #594300;
+      } // Done
+      &.status-10001, &.status-6 {
+        background-color: #fff;
+        border-color: #b2d8b9;
+        color: #14892c;
+      }
+
+  }
+
+}
+
+table#mvp {
+//  background-color1: yellow;
+  thead {
+    tr th {
+      border-bottom: 5px solid black;
+    }
+  }
+  tbody {
+    tr td {
+      border: 1px solid black;
+
+      &.component-1 {
+        background-color: yellow;
+      }
+      &.component-2 {
+        background-color: blue;
+      }
+      &.component-3 {
+        background-color: red;
+      }
+      &.component-4 {
+        background-color: red;
+        color: white;
+      }
+
+    }
+  }
+
+
+
 }

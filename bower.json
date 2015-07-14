@@ -4,9 +4,23 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
+    "components",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.0"
-  }
+    "angular": "~1.4.0",
+    "bootstrap": "~3.3.5",
+    "angular-ui": "~0.4.0"
+  },
+  "homepage": "https://github.com/ledere/jira-report",
+  "authors": [
+    "ledere <frank@duckbite.nl>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT"
 }

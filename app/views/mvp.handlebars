@@ -1,0 +1,137 @@
+
+<div id="settings">
+
+    <h1>settings</h1>
+
+    <label for="title"><span>Title: </span><input id="title" type="text" ng-model="settings.title"/></label>
+    <label for="description"><span>Description:</span><input id="description" type="text" ng-model="settings
+		.description"/></label>
+    <label for="print"><span></span><button onclick="print()">print</button></label>
+
+</div>
+
+<div id="report">
+
+
+    <div id="logo"></div>
+
+    <h1>Digital Ambition</h1>
+    <h2>MVP Report</h2>
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td ng-bind="settings.title"></td>
+        </tr>
+        <tr>
+            <td>Jira Filter</td>
+            <td>{{ report.title }}</td>
+        </tr>
+        <tr>
+            <td>Generated</td>
+            <td>{{ report.dateCreated }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td ng-bind="settings.description"></td>
+        </tr>
+        <tr>
+            <td>Number of issues in report</td>
+            <td>{{ report.numberOfIssues }}</td>
+        </tr>
+    </table>
+
+
+    <hr />
+
+
+    <table id="mvp">
+        <thead>
+        <tr>
+            <th>MVP</th>
+					{{#each components}} <th>{{ this }}</th> {{/each}}
+        </tr>
+        </thead>
+
+        <tbody>
+				{{#each report}}
+					<tr>
+							<td>{{version}}</td>
+
+							{{#each components}}
+							<td class="component-{{componentParent}}">
+									{{#each epics}}
+
+                      <a href="#" title="{{#each stories}}STORY: {{ summary }} {{#unless @last}}{{/unless}}
+{{/each}}">{{ summary }} ({{stories.length}})</a>
+
+										{{#unless @last}}<br />{{/unless}}
+
+									{{/each}}
+							</td>
+							{{/each}}
+					</tr>
+				{{/each}}
+        </tbody>
+
+
+    </table>
+
+
+    <!--<table>-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th>MVP</th>-->
+            <!--<th>COMPONENT 1</th>-->
+            <!--<th>COMPONENT 2</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr>-->
+            <!--<td>MVP 1</td>-->
+            <!--<td>Epics MVP1/COMPONENT2</td>-->
+            <!--<td>Epics MVP1/COMPONENT2</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+
+
+
+
+
+	{{#each report.item}}
+      <div class="item">
+
+          <div class="status status-{{#each status}}{{ $.id }}{{/each}}">{{#each status}} {{ _ }}
+					{{/each}}</div>
+
+          <h3> {{#each key}} {{ _ }} {{/each}} -  {{ summary }}</h3>
+
+
+
+
+				{{{ description }}}
+
+
+          <!-- attachments -->
+				{{#each attachments}}
+					{{#if attachment.length }}
+              <h2>Attachments</h2>
+              <ul>
+								{{#each attachment}}
+                    <li><a href="https://abnamro.atlassian.net/secure/attachment/{{ $.id }}/{{ $.name }}"
+                           target="_blank">{{ $
+										.name
+										}}</a></li>
+								{{/each}}
+              </ul>
+					{{/if}}
+				{{/each}}
+
+
+      </div>
+      <hr>
+	{{/each}}
+
+</div>
+
